@@ -1,0 +1,43 @@
+<!-- Есть ли здесь преимущество в использовании finally или оба фрагмента кода одинаковы? Если такое преимущество есть, то дайте пример, когда оно проявляется. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function f() {
+  try {
+    alert('начало');
+    return "result";
+  } catch (e) {
+    /// ...
+  } finally {
+    alert('очистка!');
+  }
+}
+
+f(); // очистка!
+
+function f1() {
+  try {
+    alert('начало');
+    throw new Error("ошибка");
+  } catch (e) {
+    // ...
+    if("не могу обработать ошибку") {
+      throw e;
+    }
+
+  } finally {
+    alert('очистка!')
+  }
+}
+
+f1(); // очистка!
+  </script>
+</body>
+</html>
